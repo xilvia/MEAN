@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-12">
+    <input type="text"
+           class="form-control"
+           placeholder="search..."
+           [(ngModel)]="searchText">
+  </div>
+</div>
+<button class="btn-block btn-primary"
+        routerLink="/create-user">Add</button>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>name</th>
+      <th>job</th>
+      <th>salary</th>
+      <th>email</th>
+      <!-- <th>password</th>
+      <th>token</th> -->
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of list$ | async| filter:searchText | sortbyname">
+      <td>{{user.id}}</td>
+      <td>{{user.name}}</td>
+      <td>{{user.job}}</td>
+      <td>{{user.salary}}</td>
+      <td>{{user.email}}</td>
+      <!-- <td>{{user.password}}</td>
+      <td>{{user.token}}</td> -->
+      <td>
+        <div class="btn-group">
+          <a class="btn btn-info"
+             [routerLink]="['/users', user.id]">Update</a>
+          <a class="btn btn-danger"
+             (click)="onDelete(user.id)">Delete</a>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
