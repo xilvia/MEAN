@@ -16,10 +16,10 @@ html
           li.nav-item
             a.nav-link(href="/contact") Contact  
         ul.navbar-nav
-          if user
-            if user.id
+          if loggedIn
+            if loggedIn.id
               li 
-                span #{ user.name }
+                span #{ loggedIn.name }
                 a.btn.btn-default(href="/logout") logout
             else
               li

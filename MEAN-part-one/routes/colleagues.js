@@ -7,7 +7,10 @@ const db = new UserDB();
 // get all
 router.get('/', async (req, res, next) => {
   let userData = await db.readUser();
-  res.render('colleagues', { title: 'Users', users: userData });
+  res.render('colleagues', {
+    title: 'Users', users: userData,
+    loggedIn: req.user
+  });
 });
 
 

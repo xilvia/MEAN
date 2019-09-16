@@ -6,7 +6,10 @@ const db = new DB();
 
 router.get('/', async (req, res, next) => {
   let users = await db.read()
-  res.render('users', { users: users }) // users pug innen veszi a júzereket
+  res.render('users', {
+    users: users,
+    loggedIn: req.user
+  }) // users pug innen veszi a júzereket
 })
 
 module.exports = router;

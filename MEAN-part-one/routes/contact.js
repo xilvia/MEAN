@@ -11,7 +11,8 @@ router.post('/', (req, res, next) => {
 
 router.get('/', (req, res, next) => {
   res.render('contact', {
-    title: 'Contact'
+    title: 'Contact',
+    loggedIn: req.user
 
   })
 });
