@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var session = require('express-session')
 const UserDB = require('./modules/userDB')
 const userDB = new UserDB();
 
@@ -13,6 +14,7 @@ const contactRouter = require('./routes/contact');
 const colleaguesRouter = require('./routes/colleagues');
 const api = require('./routes/api');
 const login = require('./routes/login');
+const cart = require('./routes/cart')
 
 var app = express();
 
@@ -52,6 +54,7 @@ app.use('/users', usersRouter);
 app.use('/products', productsRouter);
 app.use('/contact', contactRouter);
 app.use('/colleagues', colleaguesRouter);
+app.use('/cart', cart);
 app.use('/api', api);
 
 // catch 404 and forward to error handler

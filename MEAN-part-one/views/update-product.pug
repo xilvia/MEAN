@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  h2 Update product
+  form.form(action="/products/update", method="post")
+    input(type="hidden", name="id", value=product.id)
+    .form-group
+      label Product name
+      input.form-control(name="productname" value=product.productname)
+    .form-group
+      label Price
+      input.form-control(name="price" value=product.price)
+    .form-group
+      label Stock
+      input.form-control(name="stock" value=product.stock)
+    button.btn.btn-primary(type="submit") Save

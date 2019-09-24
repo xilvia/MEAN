@@ -1,5 +1,25 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  .row
+    .col-md-3.offset
+      a.btn.btn-primary.btn-block(href='products/new') Add
+  .row
+    each product in products
+      .col-3
+        .card
+          .card-header
+            h5= product.name
+          .card-body
+              p.card-text # #{product.id}
+              p.card-text Name: #{product.productname}
+              p.card-text Job: #{product.price}
+              p.card-text Stock: #{product.stock}
+          .card-footer
+            - let url = `products/delete/${product.id}`;
+            - let updateUrl = `products/update/${product.id}`;
+            - let addToCart = `products/post/${product.id}`;
+            .btn-group
+              a.btn.btn-info(href=updateUrl) Update
+              a.btn.btn-danger(href=url) Del
+              a.btn.btn-warning(href=addToCart) Add to Cart

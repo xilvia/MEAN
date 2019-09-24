@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 const DB = require("./../modules/db");
 const db = new DB();
+const ProductDB = require('../modules/productDB');
+const pdb = new ProductDB();
 
 /* GET home page. */
 router.get('/', (req, res, next) => {
@@ -40,6 +42,42 @@ router.put('/users/:id', async (req, res, next) => {
 
 router.delete('/users/:id', async (req, res, next) => {
   let deleted = await db.delete(req.params.id)
+  res.json(deleted);
+})
+
+
+// get all products
+
+router.get('/products', async (req, res, next) => {
+  let result = await pdb.readProduct();
+  res.json(result);
+}); // ez az api/users kérésre küldi a választ
+
+// get one product
+
+router.get('/products/:id', async (req, res, next) => {
+  let result = await pdb.readOneProduct(req.params.id);
+  res.json(result);
+})
+
+// post product
+
+router.post('/products', async (req, res, next) => {
+  let posted = await pdb.createProduct(req.body);
+  res.json(posted);
+})
+
+// update product
+
+router.put('/products/:id', async (req, res, next) => {
+  let updated = await pdb.updateProduct(req.body);
+  res.json(updated);
+})
+
+// delete
+
+router.delete('/products/:id', async (req, res, next) => {
+  let deleted = await pdb.deleteProduct(req.params.id)
   res.json(deleted);
 })
 

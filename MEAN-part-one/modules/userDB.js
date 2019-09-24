@@ -43,6 +43,24 @@ module.exports = class UserDB {
     // azért [0], mert az maga a user az adataival
   }
 
+  // async gettingCart(req, user) {
+  //   this.checklogin();
+
+  //   if (req.cookies.uuid) {
+  //     let sql = `
+  //     SELECT p.productname,
+  //     c.quantity
+  //     FROM cart c JOIN product p ON p.id = c.productId
+  //     WHERE c.userId = ${user.id}
+  //     `;
+  //     let result = await this.conn.query(sql);
+  //     return result;
+  //   }
+//}
+
+
+
+  
 
   async readUser() {
     let sql = `
@@ -76,6 +94,7 @@ module.exports = class UserDB {
     let result = await this.conn.query(sql);
     return result;
   }
+
   async updateUser(user) {
     let sql =
       `

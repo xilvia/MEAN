@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  .container
+    table.table.table-secondary
+      thead
+        th Product ID
+        th User ID
+        th Quantity
+        th Total
+      tbody
+        each item in carts
+          tr
+            td #{item.productId}        
+            td #{item.userId}
+            td #{item.quantity} 
+            td
+              - let url = `cart/delete/${item.productId}`;
+              - let updateUrl = `cart/update/${item.productId}`;
+                .btn-group
+                  a.btn.btn-info(href=updateUrl) Update
+                  a.btn.btn-danger(href=url) Del
+    div      
+      p total amount: #{price}     
+
+
+
+
+
